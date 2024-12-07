@@ -1,0 +1,28 @@
+create table if not exists EXERCISE (
+  ID SMALLINT NOT NULL AUTO_INCREMENT,
+  NAME VARCHAR(100) NOT NULL,
+  LINK VARCHAR(1000) NULL,
+  NOTES TEXT NULL,
+  BEST_ATTEMPT VARCHAR(20) NULL,
+  MUSCLE ENUM('ΣΤΗΘΟΣ', 'ΠΛΑΤΗ', 'ΠΗΧΗΣ', 'ΔΙΚΕΦΑΛΑ', 'ΤΡΙΚΕΦΑΛΑ', 'ΩΜΟΙ','ΠΟΔΙΑ'),
+  PRIMARY KEY(ID)
+);
+
+create table EXERCISE_TO_EXECUTE (
+  ID SMALLINT NOT NULL AUTO_INCREMENT,
+  EXERCISE_ID SMALLINT NOT NULL,
+  PROGRAM_ID SMALLINT NOT NULL,
+  REPS tinyint NOT NULL DEFAULT 10,
+  SETS tinyint NOT NULL DEFAULT 4,	
+  PRIMARY KEY(ID),
+  CONSTRAINT PROGRAM_FK FOREIGN KEY (PROGRAM_ID)
+    REFERENCES PROGRAM(ID),
+  CONSTRAINT EXERCISE_FK FOREIGN KEY (EXERCISE_ID)
+    REFERENCES EXERCISE(ID)
+);
+
+-- Insert to exercise
+insert into EXERCISE (NAME, LINK, NOTES) 
+VALUES(
+-- "Πάγκος", "https://youtu.be/gRVjAtPip0Y?si=s1RoTd0q975vYEHu","Ισως ενα αλλο βιντεο να τα λεει καλύτερα" <- Alrady added ;)
+);
